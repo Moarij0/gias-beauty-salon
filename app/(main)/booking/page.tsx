@@ -140,7 +140,64 @@ function BookingContent() {
       </section>
 
       <div className="py-10 px-4">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+          {/* ── Trust sidebar (desktop) ── */}
+          <aside className="hidden lg:flex flex-col gap-5 sticky top-28">
+            {/* Rating card */}
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-blush/20">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex">
+                  {[...Array(5)].map((_,i) => (
+                    <svg key={i} viewBox="0 0 20 20" fill="#D4AF37" className="w-4 h-4"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
+                <span className="font-playfair text-xl font-bold text-charcoal">4.7/5</span>
+              </div>
+              <p className="font-poppins text-xs text-warm-gray">Based on <strong className="text-charcoal">387 verified reviews</strong> from real clients</p>
+            </div>
+
+            {/* Testimonial */}
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-blush/20">
+              <svg viewBox="0 0 24 24" fill="#F2C4CE" className="w-7 h-7 mb-3 opacity-60"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p className="font-poppins text-sm text-warm-gray italic leading-relaxed mb-3">
+                "Booking was so easy and the team confirmed right away on WhatsApp. My bridal makeup was absolutely perfect!"
+              </p>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-rose-gold to-blush flex items-center justify-center text-white text-sm font-bold">A</div>
+                <div>
+                  <p className="font-poppins text-xs font-semibold text-charcoal">Ayesha K.</p>
+                  <p className="font-poppins text-[10px] text-warm-gray">Bridal Package</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Guarantees */}
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-blush/20 space-y-3">
+              {[
+                { icon: '🔒', text: 'No payment required online' },
+                { icon: '✅', text: 'Confirmation via WhatsApp' },
+                { icon: '🕐', text: 'Reply within 30 minutes' },
+                { icon: '🌸', text: '100% satisfaction guarantee' },
+              ].map(g => (
+                <div key={g.icon} className="flex items-center gap-3">
+                  <span className="text-lg">{g.icon}</span>
+                  <span className="font-poppins text-xs text-charcoal">{g.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* WhatsApp direct */}
+            <a href="https://wa.me/923155072704?text=Hi!%20I%20want%20to%20book%20an%20appointment."
+              target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-poppins text-sm font-semibold px-5 py-3.5 rounded-2xl transition-all shadow-md justify-center">
+              <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Or book via WhatsApp
+            </a>
+          </aside>
+
+          {/* ── Main booking form (2 cols wide) ── */}
+          <div className="lg:col-span-2">
           <StepIndicator current={step} />
 
           <div className="bg-white rounded-3xl shadow-card p-6 md:p-8">
@@ -470,7 +527,8 @@ function BookingContent() {
           <div className="text-center mt-6 text-xs text-warm-gray font-poppins">
             🔒 Your information is safe & secure · No payment required online
           </div>
-        </div>
+          </div>{/* end lg:col-span-2 */}
+        </div>{/* end grid */}
       </div>
     </div>
   )

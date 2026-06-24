@@ -4,7 +4,14 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, Instagram, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone, Instagram, Sparkles } from 'lucide-react'
+
+const promos = [
+  '✨ Limited Slots Available This Week — Book Now Before They Fill Up!',
+  '💍 Bridal Season Special — Get a Free Consultation with Every Package',
+  '⭐ 4.7/5 Rating · 387+ Happy Clients in Rawalpindi',
+  '💅 New: Gel Nail Extensions Starting from PKR 1,200 — Book Today!',
+]
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -20,6 +27,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [promoIndex, setPromoIndex] = useState(0)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -32,9 +40,30 @@ export default function Navbar() {
     setIsOpen(false)
   }, [pathname])
 
+  useEffect(() => {
+    const t = setInterval(() => setPromoIndex(i => (i + 1) % promos.length), 4000)
+    return () => clearInterval(t)
+  }, [])
+
   return (
     <>
-      {/* Top bar */}
+      {/* ── Promo announcement bar ── */}
+      <div className="relative overflow-hidden py-2 px-4 text-center"
+        style={{ background: 'linear-gradient(90deg, #C9956C, #D4AF37, #C9956C)' }}>
+        <AnimatePresence mode="wait">
+          <motion.p key={promoIndex}
+            initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4 }}
+            className="font-poppins text-xs font-medium text-white tracking-wide">
+            {promos[promoIndex]}
+            <Link href="/booking" className="ml-3 underline underline-offset-2 font-semibold hover:text-white/80 transition-colors">
+              Book Now →
+            </Link>
+          </motion.p>
+        </AnimatePresence>
+      </div>
+
+      {/* ── Top info bar (desktop) ── */}
       <div className="bg-charcoal text-cream text-xs font-poppins py-2 px-4 text-center hidden md:block">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <span className="flex items-center gap-2">
@@ -43,8 +72,9 @@ export default function Navbar() {
               +92 315 5072704
             </a>
           </span>
-          <span className="text-warm-gray">
-            Mon–Sat: 10am–9pm | Sun: 11am–7pm | Airport Housing Society, Rawalpindi
+          <span className="text-warm-gray flex items-center gap-1">
+            <Sparkles size={11} className="text-champagne" />
+            Mon–Sat: 10am–9pm · Sun: 11am–7pm · Airport Housing Society, Rawalpindi
           </span>
           <a
             href="https://www.instagram.com/gia_malik_salon"
