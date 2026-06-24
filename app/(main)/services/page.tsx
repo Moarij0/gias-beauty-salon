@@ -8,12 +8,12 @@ import { services, serviceCategories } from '@/lib/data'
 import PageHero from '@/components/ui/PageHero'
 
 const categoryImages: Record<string, string> = {
-  'hair-care': 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',
-  'skin-treatments': 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80',
-  'bridal-packages': 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80',
-  'nail-art': 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80',
-  'makeup': 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80',
-  'threading-waxing': 'https://images.unsplash.com/photo-1470259078422-826894b933aa?w=400&q=80',
+  'hair':      'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',
+  'skin':      'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80',
+  'bridal':    'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80',
+  'nails':     'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80',
+  'makeup':    'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=80',
+  'threading': 'https://images.unsplash.com/photo-1470259078422-826894b933aa?w=400&q=80',
 }
 
 function formatPrice(price: number) {
